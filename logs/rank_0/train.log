@@ -1,0 +1,60 @@
+12/09/2025 16:50:09 - [Rank 0] - Initialized DDP Process: Global Rank 0, Local Rank 0, World Size 2
+12/09/2025 16:50:09 - [Rank 0] - Running on device: cpu
+12/09/2025 16:50:09 - [Rank 0] - Starting training...
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 0 | Loss: 7.0749
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 10 | Loss: 6.7461
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 20 | Loss: 6.3828
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 30 | Loss: 6.0864
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 40 | Loss: 5.5246
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 50 | Loss: 5.0521
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 60 | Loss: 4.3044
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 70 | Loss: 3.3115
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 80 | Loss: 2.6039
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 90 | Loss: 1.5994
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 100 | Loss: 0.7459
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 110 | Loss: 0.4538
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 120 | Loss: 0.2391
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 130 | Loss: 0.0894
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 140 | Loss: 0.0765
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 150 | Loss: 0.0556
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 160 | Loss: 0.0423
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 170 | Loss: 0.0333
+12/09/2025 16:50:09 - [Rank 0] - Epoch 0 | Step 180 | Loss: 0.0277
+12/09/2025 16:50:10 - [Rank 0] - Epoch 0 | Step 190 | Loss: 0.0308
+12/09/2025 16:50:10 - [Rank 0] - Epoch 0 | Step 200 | Loss: 0.0251
+12/09/2025 16:50:10 - [Rank 0] - Epoch 0 | Step 210 | Loss: 0.0205
+12/09/2025 16:50:10 - [Rank 0] - Epoch 0 | Step 220 | Loss: 0.0222
+12/09/2025 16:50:10 - [Rank 0] - Epoch 0 | Step 230 | Loss: 0.0181
+12/09/2025 16:50:10 - [Rank 0] - Epoch 0 | Step 240 | Loss: 0.0174
+12/09/2025 16:50:10 - [Rank 0] - Saved checkpoint: checkpoints/ddp_epoch_0.pt
+12/09/2025 16:50:10 - [Rank 0] - Process group destroyed. Exiting.
+12/09/2025 16:53:51 - [Rank 0] - Initialized DDP Process: Global Rank 0, Local Rank 0, World Size 2
+12/09/2025 16:53:51 - [Rank 0] - Running on device: cpu
+12/09/2025 16:53:51 - [Rank 0] - Starting training...
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 0 | Loss: 7.1107
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 10 | Loss: 6.8007
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 20 | Loss: 6.3099
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 30 | Loss: 6.0421
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 40 | Loss: 5.4151
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 50 | Loss: 5.0608
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 60 | Loss: 4.2061
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 70 | Loss: 3.3977
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 80 | Loss: 2.3944
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 90 | Loss: 1.4462
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 100 | Loss: 0.8683
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 110 | Loss: 0.4064
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 120 | Loss: 0.1972
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 130 | Loss: 0.1272
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 140 | Loss: 0.0850
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 150 | Loss: 0.0513
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 160 | Loss: 0.0470
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 170 | Loss: 0.0312
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 180 | Loss: 0.0261
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 190 | Loss: 0.0240
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 200 | Loss: 0.0217
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 210 | Loss: 0.0202
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 220 | Loss: 0.0180
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 230 | Loss: 0.0135
+12/09/2025 16:53:52 - [Rank 0] - Epoch 0 | Step 240 | Loss: 0.0220
+12/09/2025 16:53:52 - [Rank 0] - Saved checkpoint: checkpoints/ddp_epoch_0.pt
+12/09/2025 16:53:52 - [Rank 0] - Process group destroyed. Exiting.

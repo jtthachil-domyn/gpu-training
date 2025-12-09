@@ -1,0 +1,58 @@
+12/09/2025 16:50:09 - [Rank 1] - Initialized DDP Process: Global Rank 1, Local Rank 1, World Size 2
+12/09/2025 16:50:09 - [Rank 1] - Running on device: cpu
+12/09/2025 16:50:09 - [Rank 1] - Starting training...
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 0 | Loss: 7.1572
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 10 | Loss: 6.7432
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 20 | Loss: 6.4524
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 30 | Loss: 5.9429
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 40 | Loss: 5.5864
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 50 | Loss: 4.9503
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 60 | Loss: 4.1155
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 70 | Loss: 3.4576
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 80 | Loss: 2.3942
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 90 | Loss: 1.3163
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 100 | Loss: 0.7309
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 110 | Loss: 0.4538
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 120 | Loss: 0.2272
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 130 | Loss: 0.1083
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 140 | Loss: 0.0759
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 150 | Loss: 0.0554
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 160 | Loss: 0.0456
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 170 | Loss: 0.0376
+12/09/2025 16:50:09 - [Rank 1] - Epoch 0 | Step 180 | Loss: 0.0337
+12/09/2025 16:50:10 - [Rank 1] - Epoch 0 | Step 190 | Loss: 0.0239
+12/09/2025 16:50:10 - [Rank 1] - Epoch 0 | Step 200 | Loss: 0.0235
+12/09/2025 16:50:10 - [Rank 1] - Epoch 0 | Step 210 | Loss: 0.0237
+12/09/2025 16:50:10 - [Rank 1] - Epoch 0 | Step 220 | Loss: 0.0184
+12/09/2025 16:50:10 - [Rank 1] - Epoch 0 | Step 230 | Loss: 0.0205
+12/09/2025 16:50:10 - [Rank 1] - Epoch 0 | Step 240 | Loss: 0.0148
+12/09/2025 16:50:10 - [Rank 1] - Process group destroyed. Exiting.
+12/09/2025 16:53:51 - [Rank 1] - Initialized DDP Process: Global Rank 1, Local Rank 1, World Size 2
+12/09/2025 16:53:51 - [Rank 1] - Running on device: cpu
+12/09/2025 16:53:51 - [Rank 1] - Starting training...
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 0 | Loss: 7.0910
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 10 | Loss: 6.7816
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 20 | Loss: 6.3754
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 30 | Loss: 6.0124
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 40 | Loss: 5.5445
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 50 | Loss: 5.1194
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 60 | Loss: 4.2332
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 70 | Loss: 3.6584
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 80 | Loss: 2.2948
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 90 | Loss: 1.6001
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 100 | Loss: 0.6566
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 110 | Loss: 0.4290
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 120 | Loss: 0.1608
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 130 | Loss: 0.1322
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 140 | Loss: 0.0632
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 150 | Loss: 0.0580
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 160 | Loss: 0.0467
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 170 | Loss: 0.0426
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 180 | Loss: 0.0229
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 190 | Loss: 0.0232
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 200 | Loss: 0.0179
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 210 | Loss: 0.0190
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 220 | Loss: 0.0203
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 230 | Loss: 0.0184
+12/09/2025 16:53:52 - [Rank 1] - Epoch 0 | Step 240 | Loss: 0.0135
+12/09/2025 16:53:52 - [Rank 1] - Process group destroyed. Exiting.
