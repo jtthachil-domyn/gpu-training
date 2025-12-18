@@ -63,3 +63,40 @@ apptainer shell --writable --fakeroot my_env_dir
 Apptainer> pip install numpy
 ```
 *Note: Using thousands of files in a sandbox dir is slow on GPFS. Prefer building the single `.sif` file locally.*
+
+---
+
+## 5. Team Workflow: Singularity on MN5
+
+> [!IMPORTANT]
+> **Cannot use Docker directly on HPC** (no root privileges). Must use Singularity/Apptainer.
+
+### Key Constraints
+- **No outbound internet** — Cannot `pip install` or `wget` from compute nodes
+- **Architecture**: AMD64 (x86_64)
+- **Build GPU images locally** — Build on a GPU-enabled VM (Azure, GCP), then transfer `.sif` to MN5
+
+### Updating Code Inside Containers
+To update or patch code inside a Singularity image without rebuilding:
+```bash
+# Mount your local code directory over the container's code
+apptainer exec --nv \
+    -B /gpfs/projects/ehpc475/code:/app \
+    ./my_container.sif \
+    python /app/train.py
+```
+
+### Hugging Face Offline Mode
+Since there's no internet, synchronize HF cache manually:
+```bash
+# On your local machine, download models
+huggingface-cli download meta-llama/Llama-2-7b-hf --local-dir ./hf_cache
+
+# Transfer to MN5
+rsync -avzP ./hf_cache domy667574@transfer1.bsc.es:/gpfs/projects/ehpc475/hf_cache/
+
+# In your training script, set offline mode
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+export HF_HOME=/gpfs/projects/ehpc475/hf_cache
+```

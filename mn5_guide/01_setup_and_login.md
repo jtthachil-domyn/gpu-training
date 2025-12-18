@@ -48,3 +48,33 @@ Host mn5
 *   `bme`: "BSC Machine Environment". Shows Message of the Day (maintenance alerts).
 *   `bsc_project`: Switch default Unix group. `source bsc_project bscXX`.
 *   `passwd`: Change your password.
+
+---
+
+## 5. Team Access Details (Domyn Guard / Project 9868)
+
+> [!IMPORTANT]
+> These are the team-specific credentials for the EuroHPC project.
+
+| Item | Value |
+|------|-------|
+| **Username** | `domy667574` |
+| **Account** | `ehpc475` |
+| **GPP Login (CPU)** | `glogin1.bsc.es`, `glogin2.bsc.es` |
+| **ACC Login (GPU)** | `alogin1.bsc.es`, `alogin2.bsc.es` |
+| **Transfer Node** | `transfer1.bsc.es` |
+
+### Quick SSH Commands
+```bash
+# Connect to GPU login node (for GPU work)
+ssh domy667574@alogin1.bsc.es
+
+# Connect to CPU login node (for general work)
+ssh domy667574@glogin1.bsc.es
+
+# Connect to transfer node (for data transfers ONLY)
+ssh domy667574@transfer1.bsc.es
+```
+
+> [!CAUTION]
+> **No Outbound Internet**: The HPC cluster is disconnected from the public internet. You cannot `pip install` or `wget` from the compute nodes. Prepare all dependencies offline or in containers.

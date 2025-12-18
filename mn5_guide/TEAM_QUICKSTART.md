@@ -2,6 +2,21 @@
 
 This guide bridges the gap between basic analogies and power-user workflows.
 
+---
+
+## 🚀 Quick Access (Domyn Guard Team)
+
+| Item | Value |
+|------|-------|
+| **Username** | `domy667574` |
+| **Account** | `ehpc475` |
+| **GPU Login** | `ssh domy667574@alogin1.bsc.es` |
+| **CPU Login** | `ssh domy667574@glogin1.bsc.es` |
+| **Data Transfer** | `ssh domy667574@transfer1.bsc.es` |
+| **Password** | 1Password → "Login Mare Nostrum" |
+
+---
+
 ## 1. The Supercomputer Analogy (Deep Dive)
 Think of MN5 like a giant **Industrial Workshop**.
 
@@ -71,7 +86,7 @@ Don't just `pip install`.
 Before submitting a 3-day training job, debug it for 10 minutes interactively.
 ```bash
 # Request 1 GPU for 1 hour
-salloc --partition=acc --qos=acc_debug --gres=gpu:1 --cpus-per-task=20 --time=01:00:00 --account=bscXX
+salloc --partition=acc --qos=acc_debug --gres=gpu:1 --cpus-per-task=20 --time=01:00:00 --account=ehpc475
 ```
 *   Wait for "Granted job allocation".
 *   You are now on a compute node.

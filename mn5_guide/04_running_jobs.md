@@ -34,13 +34,27 @@ Understanding the hardware topology is vital for performance.
 > **CPU Affinity**: Notice the NUMA domains in the images above? If you run a job without binding (`--cpu-bind`), your process might jump between sockets, killing performance. **Always** use `export SRUN_CPUS_PER_TASK`.
 
 ## 3. Submitting Jobs (Quality of Service)
-*   `acc_debug`:
-    *   Time limit: 2 hours.
-    *   Limit: 1 job.
-    *   **Priority**: Boosted. Use this to check if your code runs.
-*   `acc_normal`:
-    *   Time limit: 48 hours.
-    *   **Use for**: Production training.
+
+> [!TIP]
+> Run `bsc_queues` to see all available queues for your account.
+
+### Team Account: `ehpc475`
+
+| Queue Name | Max Time | Max Cores | Description |
+|------------|----------|-----------|-------------|
+| `acc_debug` | 2:00:00 | 640 | Debug jobs (higher priority, limited time) |
+| `acc_ehpc` **(Default)** | 72:00:00 | 8000 | Standard EuroHPC production jobs |
+| `acc_interactive` | 2:00:00 | 40 | Interactive sessions (login nodes only) |
+
+*   **`acc_debug`**:
+    *   Time limit: 2 hours, max 640 cores.
+    *   **Priority**: Boosted. Use this to test if your code runs.
+*   **`acc_ehpc`** (Default):
+    *   Time limit: 72 hours (3 days).
+    *   **Use for**: Production multi-node training.
+*   **`acc_interactive`**:
+    *   Time limit: 2 hours, max 40 cores.
+    *   **Use for**: Interactive development sessions.
 
 ## 4. Expert Job Management
 
@@ -48,7 +62,7 @@ Understanding the hardware topology is vital for performance.
 Don't wait in the queue just to find a syntax error.
 ```bash
 # "Give me a shell on a GPU node for 30 mins"
-salloc --account=bscXX --qos=acc_debug --partition=acc --gres=gpu:1 --cpus-per-task=20 --time=00:30:00
+salloc --account=ehpc475 --qos=acc_debug --partition=acc --gres=gpu:1 --cpus-per-task=20 --time=00:30:00
 ```
 *   Use `srun --pty bash` once allocated if the shell doesn't open automatically.
 
