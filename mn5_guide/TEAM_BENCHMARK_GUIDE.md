@@ -32,7 +32,11 @@ cd ~/yourname
 
 ## 3. The "Magic" Module Chain
 
-MN5 dependencies are strict. Copy-paste this EXACT command to load a working PyTorch environment:
+MN5 dependencies are strict. Copy-paste this EXACT command to load a working environment.
+
+**What does this do?**
+1.  **`module purge`**: Clears your environment variables. **Safe to run:** It only affects your current terminal window, not other users or your other sessions.
+2.  **`module load ...`**: Loads GCC, CUDA, **Python 3.11**, and **PyTorch 2.4** all at once.
 
 ```bash
 module purge
@@ -41,6 +45,16 @@ module load gcc/11.4.0 mkl/2024.0 nvidia-hpc-sdk/23.11-cuda11.8 \
             impi/2021.11 hdf5/1.14.1-2-gcc python/3.11.5-gcc \
             nccl/2.19.4 pytorch/2.4.0
 ```
+
+> **CRITICAL: Use a Virtual Environment (`venv`)**
+> Even though the system provides Python and PyTorch, **ALWAYS** create a virtual environment (`venv`) to keep your specific project dependencies isolated.
+>
+> ```bash
+> # Create venv using the system python we just loaded
+> python3 -m venv .venv
+> source .venv/bin/activate
+> ```
+> This prevents version conflicts between different projects you might work on.
 > **Best Practice:** Don't put this directly in `.bashrc` (it can break other jobs). instead, use an alias.
 >
 > *   **If using account `domy667574`**: Just type `bench_mn5` (it is already set up).
