@@ -1,0 +1,21 @@
+{
+    "timestamp": 1766253063.9069674,
+    "device": "cpu",
+    "system_info": {
+        "system": "Linux",
+        "processor": "x86_64",
+        "cpu_count_physical": "Unknown (psutil missing)",
+        "ram_gb": "Unknown"
+    },
+    "matmul": {
+        "size": 8192,
+        "avg_time_seconds": 0.3535915851593018,
+        "tflops": 3.109552585310091
+    },
+    "bandwidth": {
+        "size_elements": 100000000,
+        "avg_time_seconds": 0.017532920837402342,
+        "bandwidth_gb_s": 68.44267484742666
+    },
+    "device_name": "x86_64"
+}

@@ -110,7 +110,7 @@ apptainer exec --nv -B /gpfs/projects/ehpc475:/app ./pytorch.sif python train.py
 ## 🔧 Useful Commands
 
 ```bash
-bme                    # System status/maintenance
+bsc_acct               # Check Compute Budget & Usage
 bsc_queues             # Available queues
 bsc_quota              # Storage quota
 module av              # Available software

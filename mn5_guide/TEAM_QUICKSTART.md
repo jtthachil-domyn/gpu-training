@@ -4,7 +4,7 @@ This guide bridges the gap between basic analogies and power-user workflows.
 
 ---
 
-## 🚀 Quick Access (Domyn Guard Team)
+## Quick Access (Domyn Guard Team)
 
 | Item | Value |
 |------|-------|

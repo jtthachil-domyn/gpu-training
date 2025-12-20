@@ -1,0 +1,22 @@
+{
+    "timestamp": 1766250963.1901162,
+    "device": "mps",
+    "system_info": {
+        "system": "Darwin",
+        "processor": "arm",
+        "cpu_count_physical": 14,
+        "cpu_count_logical": 14,
+        "ram_gb": 48.0
+    },
+    "matmul": {
+        "size": 8192,
+        "avg_time_seconds": 0.16416420936584472,
+        "tflops": 6.69763301040671
+    },
+    "bandwidth": {
+        "size_elements": 100000000,
+        "avg_time_seconds": 0.005500602722167969,
+        "bandwidth_gb_s": 218.15791116196817
+    },
+    "device_name": "Apple Metal (MPS)"
+}

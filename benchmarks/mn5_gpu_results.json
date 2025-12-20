@@ -1,0 +1,21 @@
+{
+    "timestamp": 1766253091.2450864,
+    "device": "cuda",
+    "system_info": {
+        "system": "Linux",
+        "processor": "x86_64",
+        "cpu_count_physical": "Unknown (psutil missing)",
+        "ram_gb": "Unknown"
+    },
+    "matmul": {
+        "size": 16384,
+        "avg_time_seconds": 0.1653810501098633,
+        "tflops": 53.18682531260214
+    },
+    "bandwidth": {
+        "size_elements": 100000000,
+        "avg_time_seconds": 0.0008025646209716796,
+        "bandwidth_gb_s": 1495.206701919078
+    },
+    "device_name": "NVIDIA H100"
+}

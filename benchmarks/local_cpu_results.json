@@ -1,0 +1,22 @@
+{
+    "timestamp": 1766250965.246505,
+    "device": "cpu",
+    "system_info": {
+        "system": "Darwin",
+        "processor": "arm",
+        "cpu_count_physical": 14,
+        "cpu_count_logical": 14,
+        "ram_gb": 48.0
+    },
+    "matmul": {
+        "size": 4096,
+        "avg_time_seconds": 0.044976997375488284,
+        "tflops": 3.055760977652589
+    },
+    "bandwidth": {
+        "size_elements": 100000000,
+        "avg_time_seconds": 0.006530618667602539,
+        "bandwidth_gb_s": 183.74981928634534
+    },
+    "device_name": "arm"
+}
