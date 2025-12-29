@@ -1,0 +1,21 @@
+# Minimal PyTorch Container for MN5 Testing
+FROM python:3.11-slim
+
+# Install PyTorch CPU-only (smaller, faster to build)
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir transformers accelerate
+
+# Create test script
+RUN echo 'import torch\n\
+import transformers\n\
+print("=" * 50)\n\
+print("SINGULARITY TEST - MN5")\n\
+print("=" * 50)\n\
+print(f"PyTorch version: {torch.__version__}")\n\
+print(f"Transformers version: {transformers.__version__}")\n\
+print(f"CUDA available: {torch.cuda.is_available()}")\n\
+print("=" * 50)\n\
+print("SUCCESS: Container works!")\n\
+print("=" * 50)' > /test_singularity.py
+
+CMD ["python", "/test_singularity.py"]

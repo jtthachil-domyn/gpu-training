@@ -17,13 +17,54 @@
 
 ## 2. Quick Setup (One-Time)
 
-ensure you have your SSH config set up in `~/.ssh/config` (ask Joseph for the snippet).
+### SSH Configuration
+
+Add this to your `~/.ssh/config` file on your Mac:
 
 ```bash
-# SSH into the GPU login node
-ssh domy667574@alogin1.bsc.es
+# MN5 General Purpose Login (CPU jobs)
+Host mn5-gpp
+    HostName glogin1.bsc.es
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_rsa
+    ForwardAgent yes
 
-# Create your personal workspace (replace 'yourname')
+# MN5 Accelerated Login (GPU H100 jobs)
+Host mn5-acc
+    HostName alogin1.bsc.es
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_rsa
+    ForwardAgent yes
+
+# MN5 Transfer Node (file transfers only)
+Host mn5-transfer
+    HostName transfer1.bsc.es
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_rsa
+```
+
+Replace `YOUR_USERNAME` with your assigned username (e.g., `domy944409`).
+
+### Generate SSH Key (if you don't have one)
+
+```bash
+# Generate SSH key pair
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+# Copy public key to MN5 (you'll need your password)
+ssh-copy-id YOUR_USERNAME@alogin1.bsc.es
+```
+
+### First Login
+
+```bash
+# SSH into the GPU login node (using the config alias)
+ssh mn5-acc
+
+# Or directly:
+ssh YOUR_USERNAME@alogin1.bsc.es
+
+# Create your personal workspace
 mkdir ~/yourname
 cd ~/yourname
 ```
@@ -111,8 +152,118 @@ rsync -avz "domy667574@alogin1.bsc.es:~/yourname/*.json" ./results/
 
 ---
 
-## 5. Troubleshooting
+## 5. Installing Additional Packages (Offline)
 
+Since MN5 has no internet, use this workflow to install packages like `transformers`:
+
+### On Your Mac (with internet):
+```bash
+mkdir ~/mn5_wheels && cd ~/mn5_wheels
+
+# Download wheels for Python 3.11 + Linux
+pip3 download --no-deps transformers accelerate huggingface-hub tokenizers \
+    safetensors tqdm fsspec pyyaml regex numpy packaging requests \
+    --python-version 3.11 --platform manylinux2014_x86_64 --only-binary=:all:
+
+# Transfer to MN5
+rsync -avz ~/mn5_wheels/ your_user@transfer1.bsc.es:~/wheels/
+```
+
+### On MN5:
+```bash
+# Load modules and activate venv
+your_alias_name
+source ~/your_project/venv/bin/activate
+
+# Install from local wheels
+pip install --no-index --find-links ~/wheels/ transformers accelerate
+```
+
+---
+
+## 6. Singularity Containers (Recommended for Portability)
+
+For long-term portability across different systems (T4 VM, H100 HPC, etc.), use **Singularity containers**.
+
+### Step 1: Start from Official TRL Dockerfile
+
+Create `Dockerfile`:
+```dockerfile
+FROM pytorch/pytorch:2.8.0-cuda12.8-cudnn9-devel
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+RUN pip install --upgrade pip uv
+RUN uv pip install --system trl[liger,peft,vlm] kernels trackio
+```
+
+### Step 2: Build Docker Image (on Mac)
+```bash
+# Build for Linux/AMD64 architecture
+docker build --platform linux/amd64 -t trl-train:latest .
+```
+
+### Step 3: Convert to Singularity
+```bash
+# Save Docker image as tar
+docker save trl-train:latest -o trl-train.tar
+
+# Convert to Singularity (on a Linux machine or MN5)
+singularity build trl-train.sif docker-archive://trl-train.tar
+```
+
+### Step 4: Transfer to MN5 (CRITICAL)
+
+**Important:** MN5's `transfer1` node has aggressive timeouts for large files.
+**Solution:** Split large files into 30MB chunks, transfer, and reassemble.
+
+```bash
+# 1. Split the tar file (on Mac)
+split -b 30M trl-train.tar trl-train.tar.part_
+
+# 2. Transfer parts (on Mac)
+# Use a loop to transfer reliable small chunks
+for part in trl-train.tar.part_*; do
+    echo "Sending $part..."
+    scp "$part" YOUR_USERNAME@transfer1.bsc.es:~/
+done
+
+# 3. Reassemble (on MN5)
+# ssh YOUR_USERNAME@alogin1.bsc.es
+cat trl-train.tar.part_* > trl-train.tar
+rm trl-train.tar.part_*
+```
+
+### Step 5: Build on MN5
+
+**Critical Fix:** You must manually create the session directory structure first.
+
+```bash
+# 1. Create session directories (Run once)
+mkdir -p /scratch/tmp/singularity/mnt/session
+
+# 2. Build SIF image
+module load singularity/4.1.5
+singularity build trl-train.sif docker-archive://trl-train.tar
+```
+
+### Step 6: Run
+```bash
+singularity exec --nv trl-train.sif python your_script.py
+```
+
+> **Why Singularity?**
+> - Works identically on T4 VM and H100 HPC
+> - No module chain management
+> - Reproducible environment
+> - Easy to share with team members
+
+---
+
+## 7. Troubleshooting
+
+*   **"Connection reset by peer" / "Closed by remote host" during transfer**: The file is too large. Split it into smaller chunks (e.g., 30MB) using the split command in Step 4.
+*   **"failed to resolve session directory"**: You need to run `mkdir -p /scratch/tmp/singularity/mnt/session`.
 *   **"Socket verification failed"**: Your SSH agent is acting up. Run `ssh-add -D` and try again.
 *   **"Requested node configuration is not available"**: You violated the 1:20 GPU:CPU ratio. Fix your `.sbatch` file.
 *   **"ModuleNotFoundError: No module named torch"**: You forgot to load the magic module chain (Step 3) in your script or interactive session.
+*   **"No module named 'tf_keras'"**: TensorFlow/Keras conflict. Use specific imports: `from transformers import AutoModel` instead of `from transformers import *`.
+*   **Flash Attention 2 errors on T4**: T4 (SM 7.5) doesn't support FA2. Use `attn_implementation="sdpa"` or run on H100.
