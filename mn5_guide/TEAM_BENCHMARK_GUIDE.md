@@ -210,27 +210,19 @@ docker save trl-train:latest -o trl-train.tar
 singularity build trl-train.sif docker-archive://trl-train.tar
 ```
 
-### Step 4: Transfer to MN5 (CRITICAL)
+### Step 4: Transfer to MN5
 
-**Important:** MN5's `transfer1` node has aggressive timeouts for large files.
-**Solution:** Split large files into 30MB chunks, transfer, and reassemble.
+Use `scp` or `rsync` to transfer the tarball to the transfer node.
 
 ```bash
-# 1. Split the tar file (on Mac)
-split -b 30M trl-train.tar trl-train.tar.part_
+# Option 1: SCP (Simple)
+scp trl-train.tar YOUR_USERNAME@transfer1.bsc.es:~/
 
-# 2. Transfer parts (on Mac)
-# Use a loop to transfer reliable small chunks
-for part in trl-train.tar.part_*; do
-    echo "Sending $part..."
-    scp "$part" YOUR_USERNAME@transfer1.bsc.es:~/
-done
-
-# 3. Reassemble (on MN5)
-# ssh YOUR_USERNAME@alogin1.bsc.es
-cat trl-train.tar.part_* > trl-train.tar
-rm trl-train.tar.part_*
+# Option 2: Rsync (Better for resuming)
+rsync -avz --progress trl-train.tar YOUR_USERNAME@transfer1.bsc.es:~/
 ```
+
+> **Note:** If transfers keep failing with "Connection reset", your internet might be unstable. See **Troubleshooting** for the "Split File" workaround.
 
 ### Step 5: Build on MN5
 
@@ -260,7 +252,15 @@ singularity exec --nv trl-train.sif python your_script.py
 
 ## 7. Troubleshooting
 
-*   **"Connection reset by peer" / "Closed by remote host" during transfer**: The file is too large. Split it into smaller chunks (e.g., 30MB) using the split command in Step 4.
+*   **"Connection reset by peer" during transfer**: This usually means unstable internet or server timeout. **Workaround:** Split the file:
+    ```bash
+    # 1. Split into 30MB chunks
+    split -b 30M trl-train.tar trl-train.tar.part_
+    # 2. Loop transfer
+    for p in trl-train.tar.part_*; do scp "$p" user@transfer1.bsc.es:~/; done
+    # 3. Join on MN5
+    cat trl-train.tar.part_* > trl-train.tar
+    ```
 *   **"failed to resolve session directory"**: You need to run `mkdir -p /scratch/tmp/singularity/mnt/session`.
 *   **"Socket verification failed"**: Your SSH agent is acting up. Run `ssh-add -D` and try again.
 *   **"Requested node configuration is not available"**: You violated the 1:20 GPU:CPU ratio. Fix your `.sbatch` file.
